@@ -35,13 +35,13 @@ class Book(models.Model):
                               verbose_name="Изображение книги")
     series = models.ForeignKey(Series, related_name='books',
                                on_delete=models.SET_NULL,
-                               verbose_name="Серия")
+                               verbose_name="Серия", null=True)
     category = models.ForeignKey(Category, related_name='books',
                                  on_delete=models.SET_NULL,
-                                 verbose_name="Категория")
+                                 verbose_name="Категория", null=True)
     genre = models.ForeignKey(Genre, related_name='books',
                               on_delete=models.SET_NULL,
-                              verbose_name="Жанр")
+                              verbose_name="Жанр", null=True)
     publishing_year = models.PositiveSmallIntegerField(
         verbose_name="Год публикации книги")
     publishing_house = models.CharField(max_length=150,

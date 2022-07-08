@@ -19,10 +19,10 @@ class Cart(models.Model):
 
 class Rating(models.Model):
     """Модель для учета рейтинга книг"""
-    user = models.ForeignKey(User, related_name="buyer",
+    user = models.ForeignKey(User, related_name="rater",
                              verbose_name="Покупатель",
                              on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, related_name="books",
+    book = models.ForeignKey(Book, related_name="rated_books",
                              verbose_name="Книги",
                              on_delete=models.CASCADE)
     score = models.PositiveSmallIntegerField(validators=[MinValueValidator(1),
@@ -32,9 +32,9 @@ class Rating(models.Model):
 
 class Favorite(models.Model):
     """Модель для организации списка желаемого"""
-    user = models.ForeignKey(User, related_name="buyer",
+    user = models.ForeignKey(User, related_name="user",
                              verbose_name="Покупатель",
                              on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, related_name="books",
+    book = models.ForeignKey(Book, related_name="fav_books",
                              verbose_name="Книги",
                              on_delete=models.CASCADE)

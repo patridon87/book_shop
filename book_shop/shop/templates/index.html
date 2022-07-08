@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block titile %} Ваш любимый BookSHOP {% endblock %}
+
+{% block content %}
+  <div class="container">
+     <div class="row">
+
+             <h4>Новинки:</h4>
+             {% for book in books %}
+                 <div class="col-xl-3 col-md-6 col-sm-12">
+                   {% include "includes/book.html" with book=book %}
+                 </div>
+             {% endfor %}
+
+     </div>
+
+  </div>
+{% endblock %}
