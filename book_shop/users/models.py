@@ -9,8 +9,8 @@ class User(AbstractUser):
                ("female", "Женщина"),
                ]
 
-    birth_day = models.DateField(validators=[validate_birth_day])
-    phone = PhoneNumberField(verbose_name="Номер телефона")
+    birth_day = models.DateField(validators=[validate_birth_day], null=True)
+    phone = PhoneNumberField(verbose_name="Номер телефона", null=True)
     gender = models.CharField(max_length=6, choices=GENDERS,
-                              verbose_name="Пол")
-    city = models.CharField(max_length=150, verbose_name="Город")
+                              verbose_name="Пол", null=True)
+    city = models.CharField(max_length=150, verbose_name="Город", null=True)

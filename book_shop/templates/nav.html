@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="/">BookSHOP</a>
+    <a class="navbar-brand text-white" href="/"><span style="color:red">Book</span>SHOP</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,15 +21,17 @@
 
       <ul class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
-              Пользователь: {{ user.username }}.
               <li class="nav-item">
-                  <a class="nav-link text-white" href="{% url 'password_change' %}">Изменить пароль</a>
+                  <a class="nav-link text-white" href="#">{{ user.username }}</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Избранное</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Корзина</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link text-white" href="{% url 'logout' %}">Выйти</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-white" href="{% url 'new_post' %}">Новая запись</a>
               </li>
           {% else %}
               <li class="nav-item">
