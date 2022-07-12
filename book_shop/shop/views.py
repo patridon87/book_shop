@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 def index(request):
     books = [{"image": "Здесь будет картинка",
               "name": "Как написать бэкенд на питоне",

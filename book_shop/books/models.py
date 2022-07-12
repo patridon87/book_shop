@@ -49,3 +49,10 @@ class Book(models.Model):
     format = models.CharField(max_length=150, verbose_name="Формат")
     cover = models.CharField(max_length=150, verbose_name="Тип обложки")
     catalog_add_date = models.DateField(auto_now_add=True)
+    in_stock = models.PositiveSmallIntegerField(
+        verbose_name="Количество на складе")
+    number_of_sold = models.PositiveIntegerField(
+        verbose_name="Количество проданных экземпляров", default=0)
+
+    def set_number_of_sold(self, solded):
+        self.number_of_sold += solded

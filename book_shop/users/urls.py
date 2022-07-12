@@ -1,8 +1,14 @@
-# from django.urls import path
-#
-# from . import views
-#
-#
-# urlpatterns = [
-#     path("", views.index, name="index"),
-# ]
+from django.contrib.auth.views import LogoutView
+from django.urls import path
+from . import views
+
+app_name = 'users'
+
+urlpatterns = [
+    # Переназначение шаблона для страницы выхода из профиля
+    path('logout/',
+         LogoutView.as_view(template_name='logged_out.html'),
+         name='logout'),
+    # Страница регистрации
+    path('signup/', views.SignUp.as_view(), name='signup')
+]
