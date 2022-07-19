@@ -3,9 +3,10 @@ from django.db import models
 
 class Author(models.Model):
     """Модель авторов книг"""
-    first_name = models.CharField(max_length=150, verbose_name="Имя автора")
-    last_name = models.CharField(max_length=150, verbose_name="Фамилия автора")
-    bio = models.TextField(verbose_name="Краткая биография автора")
+    name = models.CharField(max_length=1500,
+                            verbose_name="ФИО Автора или авторов")
+    bio = models.TextField(blank=True, null=True,
+                           verbose_name="Краткая биография автора")
 
 
 class Category(models.Model):
