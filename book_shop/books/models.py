@@ -8,15 +8,26 @@ class Author(models.Model):
     bio = models.TextField(blank=True, null=True,
                            verbose_name="Краткая биография автора")
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     """Модель категорий книг"""
     name = models.CharField(max_length=150, verbose_name="Название категории")
 
+    def __str__(self):
+        return self.name
+
+
 
 class Genre(models.Model):
     """Модель жанров книг"""
     name = models.CharField(max_length=150, verbose_name="Название жанра")
+
+    def __str__(self):
+        return self.name
+
 
 
 class Series(models.Model):
@@ -24,6 +35,10 @@ class Series(models.Model):
     name = models.CharField(max_length=150, verbose_name="Название серии")
     author = models.ForeignKey(Author, related_name='series',
                                on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Book(models.Model):
@@ -36,7 +51,7 @@ class Book(models.Model):
                               verbose_name="Изображение книги")
     series = models.ForeignKey(Series, related_name='books',
                                on_delete=models.SET_NULL,
-                               verbose_name="Серия", null=True)
+                               verbose_name="Серия", blank=True, null=True)
     category = models.ForeignKey(Category, related_name='books',
                                  on_delete=models.SET_NULL,
                                  verbose_name="Категория", null=True)
@@ -54,6 +69,10 @@ class Book(models.Model):
         verbose_name="Количество на складе")
     number_of_sold = models.PositiveIntegerField(
         verbose_name="Количество проданных экземпляров", default=0)
+    price = models.PositiveSmallIntegerField(verbose_name='Цена')
+
+    def __str__(self):
+        return self.title
 
     def set_number_of_sold(self, solded):
         self.number_of_sold += solded
