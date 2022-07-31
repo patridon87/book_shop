@@ -10,3 +10,6 @@ def index(request):
     books = Book.objects.order_by('catalog_add_date')[:6]
     context = {"books": books}
     return render(request, "index.html", context)
+
+def cart(request):
+    pass
